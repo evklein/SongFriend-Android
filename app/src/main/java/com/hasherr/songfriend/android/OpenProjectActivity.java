@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.hasherr.songfriend.android.custom.FloatingActionButtonListener;
-import com.hasherr.songfriend.android.custom.activity.CustomMenuActivity;
-import com.hasherr.songfriend.android.custom.delegate.DeleteDialogHandler;
-import com.hasherr.songfriend.android.custom.delegate.ListHandler;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
+import com.hasherr.songfriend.android.custom.CustomMenuActivity;
+import com.hasherr.songfriend.android.ui.handler.DeleteDialogHandler;
+import com.hasherr.songfriend.android.ui.handler.ListHandler;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 public class OpenProjectActivity extends CustomMenuActivity implements FloatingActionButtonListener
 {
@@ -45,8 +45,8 @@ public class OpenProjectActivity extends CustomMenuActivity implements FloatingA
             {
                 final String itemToDelete = (String) parent.getItemAtPosition(position);
                 DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
-                deleteDialogHandler.initialize(OpenProjectActivity.this, "Delete Project", "Are you sure you want to delete this project?",
-                        path + "/" + itemToDelete, path, listHandler);
+                deleteDialogHandler.initialize(OpenProjectActivity.this, "Delete Project",
+                        "Are you sure you want to delete this project?", path + "/" + itemToDelete, path, listHandler);
                 deleteDialogHandler.show();
                 return true;
             }
@@ -68,7 +68,8 @@ public class OpenProjectActivity extends CustomMenuActivity implements FloatingA
     @Override
     public void initFloatingActionButton()
     {
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.projectFloatingActionButton);
+        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(
+                R.id.projectFloatingActionButton);
         floatingActionButton.setBackgroundTintList(getResources().getColorStateList(R.color.logoGreen));
         floatingActionButton.setOnClickListener(new View.OnClickListener()
         {

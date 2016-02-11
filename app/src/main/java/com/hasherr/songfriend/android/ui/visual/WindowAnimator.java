@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.custom;
+package com.hasherr.songfriend.android.ui.visual;
 
 import android.view.View;
 import android.view.ViewGroup;

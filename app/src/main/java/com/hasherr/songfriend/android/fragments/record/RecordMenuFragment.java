@@ -13,16 +13,16 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.adapter.AudioListArrayAdapter;
-import com.hasherr.songfriend.android.custom.CustomOrientation;
-import com.hasherr.songfriend.android.custom.FloatingActionButtonListener;
-import com.hasherr.songfriend.android.custom.delegate.DeleteDialogHandler;
-import com.hasherr.songfriend.android.custom.delegate.ListHandler;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
+import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
+import com.hasherr.songfriend.android.ui.handler.DeleteDialogHandler;
+import com.hasherr.songfriend.android.ui.handler.ListHandler;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 /**
  * Created by Evan on 1/18/2016.
  */
-public class RecordMenuFragment extends Fragment implements FloatingActionButtonListener, CustomOrientation
+public class RecordMenuFragment extends Fragment implements FloatingActionButtonListener, CustomOrientationListener
 {
     private Activity parentActivity;
     private ListHandler listHandler;

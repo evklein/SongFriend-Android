@@ -5,8 +5,8 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import com.hasherr.songfriend.android.adapter.CustomPagerAdapter;
-import com.hasherr.songfriend.android.custom.activity.CustomMenuActivity;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.custom.CustomMenuActivity;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 public class ProjectActivity extends CustomMenuActivity
 {
@@ -73,8 +73,10 @@ public class ProjectActivity extends CustomMenuActivity
     @Override
     protected void initValues()
     {
-        projectName = FileUtilities.getDirectoryAtLevel(getIntent().getExtras().getString(FileUtilities.DIRECTORY_TAG), FileUtilities.PROJECT_LEVEL);
-        draftName = FileUtilities.getDirectoryAtLevel(getIntent().getExtras().getString(FileUtilities.DIRECTORY_TAG), FileUtilities.DRAFT_LEVEL);
+        projectName = FileUtilities.getDirectoryAtLevel(getIntent().getExtras().getString(FileUtilities.DIRECTORY_TAG),
+                FileUtilities.PROJECT_LEVEL);
+        draftName = FileUtilities.getDirectoryAtLevel(getIntent().getExtras().getString(FileUtilities.DIRECTORY_TAG),
+                FileUtilities.DRAFT_LEVEL);
     }
 
     @Override

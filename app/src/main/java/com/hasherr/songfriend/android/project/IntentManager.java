@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.util;
+package com.hasherr.songfriend.android.project;
 
 import android.content.Context;
 import android.content.Intent;

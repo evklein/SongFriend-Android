@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
-import com.hasherr.songfriend.android.custom.WindowAnimator;
+import com.hasherr.songfriend.android.ui.visual.WindowAnimator;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
     private WindowAnimator windowAnimator;
-    private final int SPLASH_DELAY = 3000;
+    private final int SPLASH_DELAY = 2500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

@@ -6,8 +6,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import com.hasherr.songfriend.android.custom.activity.CustomNewItemActivity;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.custom.CustomNewItemActivity;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +40,8 @@ public class NewDraftActivity extends CustomNewItemActivity
 
     public void createDraft(View view) throws IOException
     {
-        if (!hasErrors(R.id.newDraftErrorTextView, R.id.draftTitleEditText, FileUtilities.PROJECT_DIRECTORY + "/" + projectName, "draft"))
+        if (!hasErrors(R.id.newDraftErrorTextView, R.id.draftTitleEditText,
+                FileUtilities.PROJECT_DIRECTORY + "/" + projectName, "draft"))
         {
             super.createItem(view);
             startActivity(intentManager.createIntent(this, ProjectActivity.class));
@@ -64,8 +65,10 @@ public class NewDraftActivity extends CustomNewItemActivity
     private void initSpinner()
     {
         Spinner draftSpinner = (Spinner) findViewById(R.id.draftSpinner);
-        draftSpinner.getBackground().setColorFilter(getResources().getColor(R.color.logoGreen), PorterDuff.Mode.SRC_ATOP); // Sets spinner arrow icon to green
-        ArrayList<String> draftArrayList = FileUtilities.getDirectoryList(FileUtilities.PROJECT_DIRECTORY + "/" + projectName);
+        draftSpinner.getBackground().setColorFilter(getResources().getColor(R.color.logoGreen),
+                PorterDuff.Mode.SRC_ATOP); // Sets spinner arrow icon to green
+        ArrayList<String> draftArrayList = FileUtilities.getDirectoryList(
+                FileUtilities.PROJECT_DIRECTORY + "/" + projectName);
         draftArrayList.add(0, "New Draft");
         ArrayAdapter<String> draftArrayAdapter = new ArrayAdapter<String>(this,
                 R.layout.spinner_element, draftArrayList);

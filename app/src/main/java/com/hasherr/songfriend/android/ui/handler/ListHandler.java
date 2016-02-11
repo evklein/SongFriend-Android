@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.custom.delegate;
+package com.hasherr.songfriend.android.ui.handler;
 
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;

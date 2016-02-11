@@ -1,9 +1,9 @@
-package com.hasherr.songfriend.android.custom.activity;
+package com.hasherr.songfriend.android.custom;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import com.hasherr.songfriend.android.util.IntentManager;
+import com.hasherr.songfriend.android.project.IntentManager;
 
 /**
  * Created by evan on 1/8/16.

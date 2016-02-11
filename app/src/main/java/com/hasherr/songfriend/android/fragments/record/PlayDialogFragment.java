@@ -16,7 +16,7 @@ import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.hasherr.songfriend.android.R;
-import com.hasherr.songfriend.android.custom.CustomOrientation;
+import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
 import com.hasherr.songfriend.android.project.Killable;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import java.io.IOException;
  * Created by evan on 2/1/16.
  */
 public class PlayDialogFragment extends DialogFragment implements MediaPlayer.OnPreparedListener,
-        MediaController.MediaPlayerControl, Killable, CustomOrientation
+        MediaController.MediaPlayerControl, Killable, CustomOrientationListener
 {
     private MediaPlayer mediaPlayer;
     private Handler handler;

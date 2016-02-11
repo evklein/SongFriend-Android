@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.audio;
+package com.hasherr.songfriend.android.ui.handler;
 
 import android.widget.ImageView;
 import com.hasherr.songfriend.android.R;
@@ -6,13 +6,13 @@ import com.hasherr.songfriend.android.R;
 /**
  * Created by Evan on 2/8/2016.
  */
-public class BlinkerManager
+public class BlinkerHandler
 {
     ImageView blinkerView;
     int blinkerCount;
     boolean isBlinkerOn;
 
-    public BlinkerManager(ImageView blinkerView)
+    public BlinkerHandler(ImageView blinkerView)
     {
         this.blinkerView = blinkerView;
         blinkerCount = 1;

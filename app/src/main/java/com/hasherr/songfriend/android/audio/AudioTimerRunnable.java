@@ -1,7 +1,7 @@
 package com.hasherr.songfriend.android.audio;
 
 import android.os.Handler;
-import com.hasherr.songfriend.android.util.FormatUtilities;
+import com.hasherr.songfriend.android.utility.FormatUtilities;
 
 /**
  * Created by evan on 1/20/16.

@@ -19,17 +19,17 @@ import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.audio.AudioRecorder;
 import com.hasherr.songfriend.android.audio.AudioTimerRunnable;
 import com.hasherr.songfriend.android.audio.RecordDialogFragmentUIRunnable;
-import com.hasherr.songfriend.android.custom.CustomOrientation;
-import com.hasherr.songfriend.android.custom.ErrorListener;
+import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
+import com.hasherr.songfriend.android.ui.listener.ErrorListener;
 import com.hasherr.songfriend.android.project.Killable;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.util.ArrayList;
 
 /**
  * Created by evan on 1/19/16.
  */
-public class RecordDialogFragment extends DialogFragment implements Killable, CustomOrientation, ErrorListener
+public class RecordDialogFragment extends DialogFragment implements Killable, CustomOrientationListener, ErrorListener
 {
     private RecordDialogFragmentUIRunnable recordDialogFragmentUIRunnable;
     private View view;

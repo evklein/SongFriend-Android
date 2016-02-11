@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.hasherr.songfriend.android.R;
+import com.hasherr.songfriend.android.ui.handler.BlinkerHandler;
 
 /**
  * Created by Evan on 2/8/2016.
@@ -12,7 +13,7 @@ import com.hasherr.songfriend.android.R;
 public class RecordDialogFragmentUIRunnable implements Runnable
 {
     private View view;
-    private BlinkerManager blinkerManager;
+    private BlinkerHandler blinkerManager;
     private TextView durationTextView;
     private AudioTimerRunnable audioTimerRunnable;
     private Handler handler;
@@ -20,7 +21,7 @@ public class RecordDialogFragmentUIRunnable implements Runnable
     public RecordDialogFragmentUIRunnable(View view, AudioTimerRunnable audioTimerRunnable)
     {
         this.view = view;
-        blinkerManager = new BlinkerManager((ImageView) view.findViewById(R.id.blinkerView));
+        blinkerManager = new BlinkerHandler((ImageView) view.findViewById(R.id.blinkerView));
         durationTextView = (TextView) view.findViewById(R.id.recordDialogLengthTextView);
         this.audioTimerRunnable = audioTimerRunnable;
         handler = new Handler();

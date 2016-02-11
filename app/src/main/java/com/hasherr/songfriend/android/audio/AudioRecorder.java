@@ -4,7 +4,7 @@ import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import com.hasherr.songfriend.android.project.Killable;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.io.*;
 

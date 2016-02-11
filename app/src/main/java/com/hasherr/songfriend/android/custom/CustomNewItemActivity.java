@@ -1,10 +1,11 @@
-package com.hasherr.songfriend.android.custom.activity;
+package com.hasherr.songfriend.android.custom;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.custom.CustomMenuActivity;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.io.IOException;
 import java.util.ArrayList;

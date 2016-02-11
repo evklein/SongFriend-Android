@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.hasherr.songfriend.android.R;
-import com.hasherr.songfriend.android.util.FormatUtilities;
+import com.hasherr.songfriend.android.utility.FormatUtilities;
 
 import java.util.ArrayList;
 

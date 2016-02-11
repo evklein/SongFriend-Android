@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.custom.delegate;
+package com.hasherr.songfriend.android.ui.handler;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import com.hasherr.songfriend.android.R;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.io.File;
 

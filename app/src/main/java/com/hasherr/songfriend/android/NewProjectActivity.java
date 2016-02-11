@@ -2,8 +2,8 @@ package com.hasherr.songfriend.android;
 
 import android.os.Bundle;
 import android.view.View;
-import com.hasherr.songfriend.android.custom.activity.CustomNewItemActivity;
-import com.hasherr.songfriend.android.util.FileUtilities;
+import com.hasherr.songfriend.android.custom.CustomNewItemActivity;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.io.IOException;
 

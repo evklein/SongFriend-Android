@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.util;
+package com.hasherr.songfriend.android.utility;
 
 /**
  * Created by Evan on 2/5/2016.

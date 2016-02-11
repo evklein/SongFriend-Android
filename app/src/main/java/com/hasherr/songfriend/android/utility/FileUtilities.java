@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.util;
+package com.hasherr.songfriend.android.utility;
 
 import android.os.Environment;
 
