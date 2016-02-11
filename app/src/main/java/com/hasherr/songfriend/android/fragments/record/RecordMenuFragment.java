@@ -57,7 +57,7 @@ public class RecordMenuFragment extends Fragment implements FloatingActionButton
                 String itemToDelete = (String) parent.getItemAtPosition(position);
                 DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
                 deleteDialogHandler.initialize(getActivity(), "Delete Recording", "Are you sure you want to delete this recording?",
-                        itemToDelete, listHandler);
+                        itemToDelete, recordingPath, listHandler);
                 deleteDialogHandler.show();
                 return true;
             }

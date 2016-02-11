@@ -49,7 +49,7 @@ public class DeleteDialogHandler
             public void onClick(DialogInterface dialog, int which)
             {
                 FileUtilities.delete(new File(pathOfItemToDelete));
-                listHandler.refresh(basePath);
+                listHandler.refresh(FileUtilities.getFileList(basePath));
                 dialog.cancel();
             }
         });

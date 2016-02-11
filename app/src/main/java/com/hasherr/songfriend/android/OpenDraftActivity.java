@@ -47,7 +47,7 @@ public class OpenDraftActivity extends CustomMenuActivity implements FloatingAct
                 final String itemToDelete = (String) parent.getItemAtPosition(position);
                 DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
                 deleteDialogHandler.initialize(OpenDraftActivity.this, "Delete Draft", "Are you sure you want to delete this draft?",
-                        path + "/" + itemToDelete, listHandler);
+                        path + "/" + itemToDelete, path, listHandler);
                 deleteDialogHandler.show();
                 return true;
             }
