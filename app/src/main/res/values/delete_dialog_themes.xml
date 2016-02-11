@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Theme.Delete" parent="@android:style/Theme.Holo">
+        <item name="android:alertDialogTheme">@style/Theme_Dialog_Alert</item>
+    </style>
+    <style name="Theme_Dialog_Alert">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Delete</item>
+        <item name="android:borderlessButtonStyle">@style/Widget.Delete.Button.Borderless</item>
+    </style>
+    <style name="DialogWindowTitle.Delete" parent="@style/DialogWindowTitle_Holo">
+        <item name="android:textAppearance">@style/TextAppearance.Delete.DialogWindowTitle</item>
+    </style>
+    <style name="TextAppearance.Delete.DialogWindowTitle" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.Delete.Button.Borderless" parent="@android:style/Widget.Holo.Button.Borderless">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAppearance">@style/TextAppearance.Delete.DialogButton</item>
+    </style>
+
+    <style name="TextAppearance.Delete.DialogButton" parent="@android:style/TextAppearance.Holo.Medium">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Local copy of android:Theme.Holo.Dialog.Alert -->
+    <style name="Theme_Holo_Dialog_Alert" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle_Holo</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Local copy of android:DialogWindowTitle.Holo -->
+    <style name="DialogWindowTitle_Holo">
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.DialogWindowTitle</item>
+    </style>
+</resources>

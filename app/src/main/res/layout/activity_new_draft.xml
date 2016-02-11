@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/backgroundColor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.hasherr.songfriend.android.NewDraftActivity">
+
+        <android.support.design.widget.AppBarLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:theme="@style/AppBarOverlay">
+
+                <android.support.v7.widget.Toolbar
+                        android:id="@+id/newDraftToolbar"
+                        android:backgroundTint="@color/backgroundColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="?attr/colorPrimary"
+                        app:popupTheme="@style/PopupOverlay"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <include layout="@layout/content_new_draft"/>
+
+        <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="false"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <EditText
+                        android:id="@+id/draftTitleEditText"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Draft Title"
+                        android:layout_gravity="center"
+                        android:textColorHint="#656565"
+                        android:textColor="#ffffff"
+                        android:inputType="text"
+                        android:layout_column="0" android:layout_row="0"/>
+                <EditText
+                        android:id="@+id/draftDescriptionEditText"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:hint="Draft Description"
+                        android:textColorHint="#656565"
+                        android:gravity="left"
+                        android:textColor="#ffffff"
+                        android:inputType="text|textMultiLine"
+                        android:layout_marginBottom="20dp"
+                        android:layout_column="0" android:layout_row="1"/>
+                <TextView
+                        android:id="@+id/draftSetBaseTextTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Set a base draft"
+                        android:textColor="@color/logoGreen"
+                        android:layout_row="2" android:layout_column="0"/>
+                <Spinner
+                        android:id="@+id/draftSpinner"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:popupBackground="@color/backgroundColor"
+                        android:layout_column="0" android:layout_row="3"/>
+                <Button
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="200dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="50dp"
+                        android:text="Create new draft"
+                        android:onClick="createDraft"
+                        android:layout_gravity="top|center"
+                        android:id="@+id/createDraftButton"
+                        android:background="@drawable/button_drawable"
+                        android:layout_column="0" android:layout_row="4"/>
+                <TextView
+                        android:id="@+id/newDraftErrorTextView"
+                        android:layout_width="300dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="top|center"
+                        android:textColor="@color/errorColor"
+                        android:layout_column="0" android:layout_row="5"/>
+        </GridLayout>
+
+</android.support.design.widget.CoordinatorLayout>

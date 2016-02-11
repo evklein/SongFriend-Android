@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        android:background="@color/backgroundColor"
+        tools:context="com.hasherr.songfriend.android.SplashScreenActivity">
+        <ImageView
+                android:background="@drawable/song_friend_title"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="110dp"
+                android:layout_width="246dp" android:layout_height="113dp"/>
+</LinearLayout>

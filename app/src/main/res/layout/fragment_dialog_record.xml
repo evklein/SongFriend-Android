@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@color/backgroundColor"
+              android:layout_width="250dp" android:layout_height="wrap_content"
+              android:minWidth="275dp" android:minHeight="300dp"
+              android:orientation="vertical">
+
+
+    <TextView
+            android:text="Record"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="10pt"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <View android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginBottom="20dp"
+          android:background="@color/logoGreen"/>
+
+    <Button android:layout_width="80dp" android:layout_height="80dp"
+            android:id="@+id/recordButton"
+            android:onClick="recordButtonOnClick"
+            android:background="@drawable/record_button_off"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView
+            android:background="@drawable/blinker_off"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/blinkerView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+                android:layout_marginRight="5dp"/>
+        <TextView
+                android:id="@+id/recordDialogLengthTextView"
+                android:text="00 : 00"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#545454"
+                android:textSize="15dp"
+                android:layout_marginBottom="20dp"
+                android:textStyle="italic"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <EditText
+            android:id="@+id/recordingTitleEditText"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:hint="Recording Title"
+            android:textColorHint="#656565"
+            android:layout_width="200dp" android:layout_height="wrap_content"/>
+
+    <TextView
+            android:id="@+id/recordDialogErrorTextView"
+            android:textColor="@color/errorColor"
+            android:layout_gravity="top|center"
+            android:layout_marginLeft="20dp"
+            android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+
+    <LinearLayout
+            android:id="@+id/recordButtons"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/cancelRecordingButton"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:background="@drawable/dialog_button_drawable_left"
+                android:layout_width="125dp" android:layout_height="50dp"/>
+        <Button
+                android:text="Save Recording"
+                android:id="@+id/saveRecordButton"
+                android:textColor="@color/white"
+                android:background="@drawable/dialog_button_drawable_right"
+                android:layout_width="150dp" android:layout_height="50dp"/>
+    </LinearLayout>
+</LinearLayout>
