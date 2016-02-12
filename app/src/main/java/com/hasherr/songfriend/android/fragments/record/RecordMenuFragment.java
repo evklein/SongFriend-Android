@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.hasherr.songfriend.android.R;
-import com.hasherr.songfriend.android.adapter.AudioListArrayAdapter;
+import com.hasherr.songfriend.android.ui.adapter.AudioListArrayAdapter;
 import com.hasherr.songfriend.android.ui.handler.DeleteDialogHandler;
 import com.hasherr.songfriend.android.ui.handler.ListHandler;
 import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;

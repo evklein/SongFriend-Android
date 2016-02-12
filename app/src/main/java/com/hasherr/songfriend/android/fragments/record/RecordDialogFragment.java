@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +17,11 @@ import android.widget.TextView;
 import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.audio.AudioRecorder;
 import com.hasherr.songfriend.android.audio.AudioTimerRunnable;
-import com.hasherr.songfriend.android.ui.runnable.RecordDialogFragmentUIRunnable;
+import com.hasherr.songfriend.android.project.Killable;
 import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
 import com.hasherr.songfriend.android.ui.listener.ErrorListener;
-import com.hasherr.songfriend.android.project.Killable;
+import com.hasherr.songfriend.android.ui.runnable.RecordDialogFragmentUIRunnable;
+import com.hasherr.songfriend.android.utility.AudioUtilities;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
         audioRecorder = new AudioRecorder();
         isRecording = false;
         recordDialogFragmentUIRunnable = new RecordDialogFragmentUIRunnable((ImageView) view.findViewById(R.id.blinkerView),
-                (TextView) view.findViewById(R.id.recordDialogLengthTextView), new AudioTimerRunnable(new Handler()));
+                (TextView) view.findViewById(R.id.recordDialogLengthTextView), new AudioTimerRunnable());
 
         setSpecifiedOrientation();
         initRecordButton();
@@ -148,7 +148,7 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
         ArrayList<String> previousRecordings = FileUtilities.getFileList(recordPath);
         String titleContents = recordingTitleEditText.getText().toString().trim();
 
-        if (audioRecorder.isEmpty())
+        if (AudioUtilities.isEmpty(audioRecorder.getAudioData()))
         {
             errorView.setText("Recording has not been started.");
             return true;

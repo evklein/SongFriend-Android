@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.adapter;
+package com.hasherr.songfriend.android.ui.adapter;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
@@ -20,6 +20,9 @@ public class AudioListArrayAdapter extends ArrayAdapter<String>
 {
     private Activity parentActivity;
     private ArrayList<String> filePaths;
+    private View rowView;
+    private TextView titleTextView;
+    private TextView durationTextView;
 
     public AudioListArrayAdapter(Activity parentActivity, ArrayList<String> filePaths)
     {
@@ -32,9 +35,9 @@ public class AudioListArrayAdapter extends ArrayAdapter<String>
     public View getView(int position, View view, ViewGroup parent)
     {
         LayoutInflater layoutInflater = parentActivity.getLayoutInflater();
-        View rowView = layoutInflater.inflate(R.layout.recording_row, null, true);
-        TextView titleTextView = (TextView) rowView.findViewById(R.id.rowTitles);
-        TextView durationTextView = (TextView) rowView.findViewById(R.id.rowDurations);
+        rowView = layoutInflater.inflate(R.layout.recording_row, null, true);
+        titleTextView = (TextView) rowView.findViewById(R.id.rowTitles);
+        durationTextView = (TextView) rowView.findViewById(R.id.rowDurations);
 
         String currentPath = filePaths.get(position);
         titleTextView.setText(FormatUtilities.getFormattedFileTitle(currentPath, "wav"));
@@ -42,4 +45,5 @@ public class AudioListArrayAdapter extends ArrayAdapter<String>
         durationTextView.setText(FormatUtilities.getFormattedTime(tempMediaPlayer.getDuration()));
         return rowView;
     }
+
 }

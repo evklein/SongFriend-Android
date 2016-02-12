@@ -1,4 +1,4 @@
-package com.hasherr.songfriend.android.adapter;
+package com.hasherr.songfriend.android.ui.adapter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

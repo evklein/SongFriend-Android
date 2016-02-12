@@ -3,18 +3,16 @@ package com.hasherr.songfriend.android.custom;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import com.hasherr.songfriend.android.custom.CustomMenuActivity;
+import com.hasherr.songfriend.android.ui.listener.ErrorListener;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 /**
  * Created by evan on 1/11/16.
  */
-public abstract class CustomNewItemActivity extends CustomMenuActivity
+public abstract class CustomNewItemActivity extends ToolBarActivity implements ErrorListener
 {
     protected Hashtable<String, String> elements;
 
@@ -28,7 +26,7 @@ public abstract class CustomNewItemActivity extends CustomMenuActivity
     public void createItem(View view) throws IOException
     {
         createElements();
-        createPath();
+        initPath();
         FileUtilities.createDirectory(elements, path);
         intentManager.makePathBundle(FileUtilities.DIRECTORY_TAG, path);
     }
@@ -38,29 +36,30 @@ public abstract class CustomNewItemActivity extends CustomMenuActivity
         return ((EditText) findViewById(editTextID)).getText().toString().trim();
     }
 
-    protected boolean hasErrors(int errorTextViewID, int titleEditTextID, String fileListDirectoryPath, String type)
-    {
-        TextView errorTextView = (TextView) findViewById(errorTextViewID);
-        String title = getEditTextContents(titleEditTextID).toLowerCase();
-
-        if (title.equals(""))
-        {
-            errorTextView.setText("Please add a title.");
-            return true;
-        }
-
-        ArrayList<String> allItemNames = FileUtilities.getDirectoryList(fileListDirectoryPath);
-        for (String s : allItemNames)
-        {
-            if (s.toLowerCase().equals(title))
-            {
-                errorTextView.setText("That " + type + " already exists.");
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     protected abstract void createElements();
+
+//    @Override
+//    public boolean hasErrors()
+//    {
+//        TextView errorTextView = (TextView) findViewById(errorTextViewID);
+//        String title = getEditTextContents(titleEditTextID).toLowerCase();
+//
+//        if (title.equals(""))
+//        {
+//            errorTextView.setText("Please add a title.");
+//            return true;
+//        }
+//
+//        ArrayList<String> allItemNames = FileUtilities.getDirectoryList(fileListDirectoryPath);
+//        for (String s : allItemNames)
+//        {
+//            if (s.toLowerCase().equals(title))
+//            {
+//                errorTextView.setText("That " + type + " already exists.");
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 }

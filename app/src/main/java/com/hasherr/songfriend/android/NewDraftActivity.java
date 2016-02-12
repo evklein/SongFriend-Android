@@ -33,7 +33,7 @@ public class NewDraftActivity extends CustomNewItemActivity
     }
 
     @Override
-    protected void createPath()
+    public void createPath()
     {
         path = FileUtilities.PROJECT_DIRECTORY + "/" + projectName + "/" + getEditTextContents(R.id.draftTitleEditText);
     }

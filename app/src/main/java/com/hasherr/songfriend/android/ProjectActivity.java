@@ -4,11 +4,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
-import com.hasherr.songfriend.android.adapter.CustomPagerAdapter;
-import com.hasherr.songfriend.android.custom.CustomMenuActivity;
+import com.hasherr.songfriend.android.ui.adapter.CustomPagerAdapter;
+import com.hasherr.songfriend.android.custom.ToolBarActivity;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
-public class ProjectActivity extends CustomMenuActivity
+public class ProjectActivity extends ToolBarActivity
 {
     private String projectName;
     private String draftName;

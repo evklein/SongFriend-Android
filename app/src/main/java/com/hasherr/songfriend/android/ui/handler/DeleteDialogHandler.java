@@ -3,6 +3,7 @@ package com.hasherr.songfriend.android.ui.handler;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import com.hasherr.songfriend.android.R;
@@ -71,10 +72,9 @@ public class DeleteDialogHandler
 
     private void refreshList()
     {
-        if (directoryOnly)
-            listHandler.refresh(FileUtilities.getDirectoryList(basePath));
-        else
-            listHandler.refresh(FileUtilities.getFileList(basePath));
+        Log.wtf("We're refreshing here!", basePath);
+        if (directoryOnly) listHandler.refresh(FileUtilities.getDirectoryList(basePath));
+        else listHandler.refresh(FileUtilities.getPathList(basePath));
     }
 
     private void setDividerColor(int colorID)

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.hasherr.songfriend.android.ui.visual.WindowAnimator;
 import com.hasherr.songfriend.android.utility.FileUtilities;
-import com.hasherr.songfriend.android.project.IntentManager;
 
 import java.io.File;
 

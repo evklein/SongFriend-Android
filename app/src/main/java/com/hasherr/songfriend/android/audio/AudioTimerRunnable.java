@@ -1,6 +1,5 @@
 package com.hasherr.songfriend.android.audio;
 
-import android.os.Handler;
 import com.hasherr.songfriend.android.utility.FormatUtilities;
 
 /**
@@ -8,18 +7,27 @@ import com.hasherr.songfriend.android.utility.FormatUtilities;
  */
 public class AudioTimerRunnable implements Runnable
 {
-    private Handler handler;
-    private long start;
-    private long minutes;
-    private long milliseconds;
-    private long oldMilliseconds;
+    private long start, minutes, milliseconds, oldMilliseconds;
 
-    public AudioTimerRunnable(Handler handler)
+    public AudioTimerRunnable()
     {
-        this.handler = handler;
         start = System.currentTimeMillis();
         minutes = 0L;
+        milliseconds = 0L;
         oldMilliseconds = 0L;
+    }
+
+    public void restartTimer()
+    {
+        start = System.currentTimeMillis();
+        oldMilliseconds = milliseconds;
+    }
+
+    public String getCurrentTime()
+    {
+        calculateMilliseconds();
+        updateMinutes();
+        return FormatUtilities.getFormattedTime((int) minutes, (int) milliseconds);
     }
 
     @Override
@@ -28,12 +36,10 @@ public class AudioTimerRunnable implements Runnable
         getCurrentTime();
     }
 
-    public String getCurrentTime()
+    private void calculateMilliseconds()
     {
         milliseconds = System.currentTimeMillis() - start;
         milliseconds += oldMilliseconds;
-        updateMinutes();
-        return FormatUtilities.getFormattedTime((int) minutes, (int) milliseconds);
     }
 
     private void updateMinutes()
@@ -45,11 +51,5 @@ public class AudioTimerRunnable implements Runnable
             milliseconds = 0;
             oldMilliseconds = 0;
         }
-    }
-
-    public void restartTimer()
-    {
-        start = System.currentTimeMillis();
-        oldMilliseconds = milliseconds;
     }
 }
