@@ -13,10 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.adapter.AudioListArrayAdapter;
-import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
-import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
 import com.hasherr.songfriend.android.ui.handler.DeleteDialogHandler;
 import com.hasherr.songfriend.android.ui.handler.ListHandler;
+import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
+import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
 /**
@@ -57,7 +57,7 @@ public class RecordMenuFragment extends Fragment implements FloatingActionButton
                 String itemToDelete = (String) parent.getItemAtPosition(position);
                 DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
                 deleteDialogHandler.initialize(getActivity(), "Delete Recording", "Are you sure you want to delete this recording?",
-                        itemToDelete, recordingPath, listHandler);
+                        itemToDelete, recordingPath, false, listHandler);
                 deleteDialogHandler.show();
                 return true;
             }

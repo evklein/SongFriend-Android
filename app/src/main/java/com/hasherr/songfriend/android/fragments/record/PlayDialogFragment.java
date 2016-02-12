@@ -49,7 +49,7 @@ public class PlayDialogFragment extends DialogFragment implements MediaPlayer.On
         recordingPath = getArguments().getString("recordingPath");
         isPlaying = false;
         setRetainInstance(true);
-setSpecifiedOrientation();
+        setSpecifiedOrientation();
         initMediaPlayer();
         initTitle(view);
         initAudioSeeker(view);
@@ -102,16 +102,10 @@ setSpecifiedOrientation();
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar)
-            {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar)
-            {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
         seekBarProgressRunnable = new Runnable()
@@ -127,7 +121,7 @@ setSpecifiedOrientation();
                         if (isPlaying)
                         {
                             audioSeekBar.setProgress(mediaPlayer.getCurrentPosition());
-                            handler.postDelayed(this, 10);
+                            handler.postDelayed(this, 50);
                         }
                     }
                 });
@@ -149,7 +143,8 @@ setSpecifiedOrientation();
                     Log.wtf("Path", recordingPath);
                     isPlaying = true;
                     start();
-                } else
+                }
+                else
                 {
                     playPauseButton.setBackgroundResource(R.drawable.play_button);
                     isPlaying = false;
@@ -240,40 +235,22 @@ setSpecifiedOrientation();
     }
 
     @Override
-    public int getBufferPercentage()
-    {
-        return 0;
-    }
+    public int getBufferPercentage() { return 0; }
 
     @Override
-    public boolean canPause()
-    {
-        return true;
-    }
+    public boolean canPause() { return true; }
 
     @Override
-    public boolean canSeekBackward()
-    {
-        return true;
-    }
+    public boolean canSeekBackward() { return true; }
 
     @Override
-    public boolean canSeekForward()
-    {
-        return true;
-    }
+    public boolean canSeekForward() { return true; }
 
     @Override
-    public int getAudioSessionId()
-    {
-        return mediaPlayer.getAudioSessionId();
-    }
+    public int getAudioSessionId() { return mediaPlayer.getAudioSessionId(); }
 
     @Override
-    public void onPrepared(MediaPlayer mp)
-    {
-
-    }
+    public void onPrepared(MediaPlayer mp) {}
 
     @Override
     public void setSpecifiedOrientation()
@@ -313,10 +290,7 @@ setSpecifiedOrientation();
         handler.post(null);
         isPlaying = false;
         if (mediaPlayer.isPlaying())
-        {
             mediaPlayer.stop();
-            mediaPlayer.release();
-        }
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER); // TODO: Stop this.
+        mediaPlayer.release();
     }
 }

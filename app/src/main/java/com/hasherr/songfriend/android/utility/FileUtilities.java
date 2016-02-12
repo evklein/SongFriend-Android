@@ -50,19 +50,13 @@ public class FileUtilities
         return paths;
     }
 
-    public static ArrayList<String> getFileList(File[] allFiles)
-    {
-        ArrayList<String> fileNames = new ArrayList<>();
-        for (File f : allFiles)
-            fileNames.add(f.getName());
-        return fileNames;
-    }
 
-    public static void delete(File directoryToDelete)
+
+    public static void delete(File itemToDelete)
     {
-        if (directoryToDelete.isDirectory())
+        if (itemToDelete.isDirectory())
         {
-            File[] allFiles = directoryToDelete.listFiles();
+            File[] allFiles = itemToDelete.listFiles();
             for (File f : allFiles)
             {
                 if (f.isDirectory())
@@ -71,7 +65,7 @@ public class FileUtilities
                     f.delete();
             }
         }
-        directoryToDelete.delete();
+        itemToDelete.delete();
     }
 
     // Splits a directory into pieces and then reads the particular directory at the specified level(s).
@@ -89,6 +83,7 @@ public class FileUtilities
         else if (level == FileUtilities.DRAFT_LEVEL)
             returnItemIndex = allDirectories.indexOf("SongFriend") + 2;
         String directoryNameToReturn = allDirectories.get(returnItemIndex);
+
         return directoryNameToReturn;
     }
 

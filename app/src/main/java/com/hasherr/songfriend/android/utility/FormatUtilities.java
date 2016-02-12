@@ -35,17 +35,6 @@ public class FormatUtilities
         return formattedMinutes + " : " + formattedSeconds;
     }
 
-    public static String getFormattedDirectoryTitle(String filePath)
-    {
-        int lastLevelIndex = 0;
-        for (int i = 0; i < filePath.length(); i++)
-        {
-            if (filePath.charAt(i) == '/')
-                lastLevelIndex = i;
-        }
-        return filePath.substring(lastLevelIndex + 1);
-    }
-
     public static String getFormattedFileTitle(String filePath, String fileExtension)
     {
         int lastLevelIndex = 0;

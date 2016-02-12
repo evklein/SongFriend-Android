@@ -21,13 +21,15 @@ public class DeleteDialogHandler
     private String pathOfItemToDelete;
     private String basePath;
     private ListHandler listHandler;
+    private boolean directoryOnly;
 
-    public void initialize(Context context, String title, String message, String basePath, String pathOfItemToDelete, ListHandler listHandler)
+    public void initialize(Context context, String title, String message, String pathOfItemToDelete, String basePath, boolean directoryOnly, ListHandler listHandler)
     {
         this.context = context;
         this.pathOfItemToDelete = pathOfItemToDelete;
         this.basePath = basePath;
         this.listHandler = listHandler;
+        this.directoryOnly = directoryOnly;
         dialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.Theme_Delete));
         dialogBuilder.setTitle(title);
         dialogBuilder.setMessage(message);
@@ -49,7 +51,7 @@ public class DeleteDialogHandler
             public void onClick(DialogInterface dialog, int which)
             {
                 FileUtilities.delete(new File(pathOfItemToDelete));
-                listHandler.refresh(FileUtilities.getFileList(basePath));
+                refreshList();
                 dialog.cancel();
             }
         });
@@ -65,6 +67,14 @@ public class DeleteDialogHandler
                 dialog.cancel();
             }
         });
+    }
+
+    private void refreshList()
+    {
+        if (directoryOnly)
+            listHandler.refresh(FileUtilities.getDirectoryList(basePath));
+        else
+            listHandler.refresh(FileUtilities.getFileList(basePath));
     }
 
     private void setDividerColor(int colorID)

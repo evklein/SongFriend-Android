@@ -46,7 +46,7 @@ public class OpenProjectActivity extends CustomMenuActivity implements FloatingA
                 final String itemToDelete = (String) parent.getItemAtPosition(position);
                 DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
                 deleteDialogHandler.initialize(OpenProjectActivity.this, "Delete Project",
-                        "Are you sure you want to delete this project?", path + "/" + itemToDelete, path, listHandler);
+                        "Are you sure you want to delete this project?", path + "/" + itemToDelete, path, true, listHandler);
                 deleteDialogHandler.show();
                 return true;
             }

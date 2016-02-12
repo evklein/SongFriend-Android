@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.audio.AudioRecorder;
 import com.hasherr.songfriend.android.audio.AudioTimerRunnable;
-import com.hasherr.songfriend.android.audio.RecordDialogFragmentUIRunnable;
+import com.hasherr.songfriend.android.ui.runnable.RecordDialogFragmentUIRunnable;
 import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
 import com.hasherr.songfriend.android.ui.listener.ErrorListener;
 import com.hasherr.songfriend.android.project.Killable;
@@ -53,7 +53,8 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
         recordPath = getArguments().getString("recordingPath");
         audioRecorder = new AudioRecorder();
         isRecording = false;
-        recordDialogFragmentUIRunnable = new RecordDialogFragmentUIRunnable(view, new AudioTimerRunnable(new Handler()));
+        recordDialogFragmentUIRunnable = new RecordDialogFragmentUIRunnable((ImageView) view.findViewById(R.id.blinkerView),
+                (TextView) view.findViewById(R.id.recordDialogLengthTextView), new AudioTimerRunnable(new Handler()));
 
         setSpecifiedOrientation();
         initRecordButton();
