@@ -7,7 +7,7 @@ import android.view.animation.DecelerateInterpolator;
 /**
  * Created by evan on 2/9/16.
  */
-public class WindowAnimator
+public class WindowSlideInAnimator
 {
     public void animate(ViewGroup windowRoot, boolean hasFocus)
     {
@@ -32,12 +32,7 @@ public class WindowAnimator
     {
         view.setTranslationY(windowRoot.getHeight());
         view.setAlpha(0);
-
-        view.animate()
-                .translationY(0)
-                .alpha(1)
-                .setStartDelay(300)
-                .setDuration(400 + 30 * viewPosition)
+        view.animate().translationY(0).alpha(1).setStartDelay(300).setDuration(400 + 30 * viewPosition)
                 .setInterpolator(new DecelerateInterpolator(2f)).start();
     }
 }

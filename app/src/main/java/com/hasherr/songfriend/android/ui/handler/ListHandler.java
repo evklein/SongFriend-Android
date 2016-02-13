@@ -13,15 +13,12 @@ public class ListHandler
 {
     private ArrayAdapter<String> listAdapter;
     private ListView listView;
-    private String contentPath;
 
-    public ListHandler(ListView listView, ArrayAdapter<String> listAdapter, String contentPath)
+    public ListHandler(ListView listView, ArrayAdapter<String> listAdapter)
     {
         this.listAdapter = listAdapter;
         this.listView = listView;
         listView.setAdapter(listAdapter);
-
-        this.contentPath = contentPath;
     }
 
     public void initListViewItemClick(AdapterView.OnItemClickListener onItemClickListener)
@@ -34,11 +31,15 @@ public class ListHandler
         listView.setOnItemLongClickListener(onItemLongClickListener);
     }
 
-
     public void refresh(ArrayList<String> list)
     {
         listAdapter.clear();
         listAdapter.addAll(list);
         listAdapter.notifyDataSetChanged();
+    }
+
+    public interface ListHandlerListener
+    {
+        void initListHandler();
     }
 }

@@ -7,9 +7,8 @@ public class FormatUtilities
 {
     public static String getFormattedTime(int milliseconds)
     {
-        int minutes = milliseconds / 60000;
-        milliseconds -= minutes;
-        int seconds = milliseconds / 1000;
+        int minutes = (milliseconds / 60000) % 60;
+        int seconds = (milliseconds / 1000) % 60 ;
 
         String formattedMinutes = Integer.toString(minutes);
         String formattedSeconds = Integer.toString(seconds);
@@ -23,7 +22,7 @@ public class FormatUtilities
     /* RecordDialogFragment Version */
     public static String getFormattedTime(int minutes, int remainingMilliseconds)
     {
-        int seconds = remainingMilliseconds / 1000;
+        int seconds = (remainingMilliseconds / 1000) % 60;
 
         String formattedMinutes = Integer.toString(minutes);
         String formattedSeconds = Integer.toString(seconds);

@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import com.hasherr.songfriend.android.project.IntentManager;
-import com.hasherr.songfriend.android.project.PathCarrier;
+import com.hasherr.songfriend.android.project.PathListener;
 
 /**
  * Created by evan on 1/8/16.
  */
-public abstract class ToolBarActivity extends AppCompatActivity implements PathCarrier
+public abstract class ToolBarActivity extends AppCompatActivity implements PathListener
 {
     protected String path;
     protected IntentManager intentManager;

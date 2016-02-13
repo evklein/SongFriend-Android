@@ -20,9 +20,6 @@ public class AudioListArrayAdapter extends ArrayAdapter<String>
 {
     private Activity parentActivity;
     private ArrayList<String> filePaths;
-    private View rowView;
-    private TextView titleTextView;
-    private TextView durationTextView;
 
     public AudioListArrayAdapter(Activity parentActivity, ArrayList<String> filePaths)
     {
@@ -35,9 +32,9 @@ public class AudioListArrayAdapter extends ArrayAdapter<String>
     public View getView(int position, View view, ViewGroup parent)
     {
         LayoutInflater layoutInflater = parentActivity.getLayoutInflater();
-        rowView = layoutInflater.inflate(R.layout.recording_row, null, true);
-        titleTextView = (TextView) rowView.findViewById(R.id.rowTitles);
-        durationTextView = (TextView) rowView.findViewById(R.id.rowDurations);
+        View rowView = layoutInflater.inflate(R.layout.recording_row, null, true);
+        TextView titleTextView = (TextView) rowView.findViewById(R.id.rowTitles);
+        TextView durationTextView = (TextView) rowView.findViewById(R.id.rowDurations);
 
         String currentPath = filePaths.get(position);
         titleTextView.setText(FormatUtilities.getFormattedFileTitle(currentPath, "wav"));

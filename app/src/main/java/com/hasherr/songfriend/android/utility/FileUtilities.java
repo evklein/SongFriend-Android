@@ -15,42 +15,16 @@ public class FileUtilities
     public final static String INTERNAL_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath();
     public final static String PROJECT_DIRECTORY = INTERNAL_DIRECTORY + "/SongFriend";
     public final static String DIRECTORY_TAG = "directory_tag";
-    public final static String RECORDING_TAG = "recording_tag";
+    public final static String RECORDING_TAG = "recordingPath";
+    public final static String MODIFY_RECORDING_TAG = "modify_recording_tag";
     public final static int MODIFY_REQUEST_CODE = 7743;
     public final static int PROJECT_LEVEL = 1;
     public final static int DRAFT_LEVEL = 2;
 
-    public static ArrayList<String> getDirectoryList(String baseDirectory)
+    public static String getFileNameNoExtension(String fileName, String fileType)
     {
-        ArrayList<String> fileNames = new ArrayList<String>();
-        File dir = new File(baseDirectory);
-        File[] allDirs = dir.listFiles();
-        for (File f : allDirs)
-            if (f.isDirectory())
-                fileNames.add(f.getName());
-        return fileNames;
+        return fileName.substring(0, fileName.indexOf("." + fileType));
     }
-
-    public static ArrayList<String> getFileList(String baseDirectory)
-    {
-        ArrayList<String> fileNames = new ArrayList<String>();
-        File dir = new File(baseDirectory);
-        File[] allFiles = dir.listFiles();
-        for (File f : allFiles)
-            fileNames.add(f.getName());
-        return fileNames;
-    }
-
-    public static ArrayList<String> getPathList(String baseDirectory)
-    {
-        ArrayList<String> fileNames = getFileList(baseDirectory);
-        ArrayList<String> paths = new ArrayList<>();
-        for (int i = 0; i < fileNames.size(); i++)
-            paths.add(baseDirectory + "/" + fileNames.get(i));
-        return paths;
-    }
-
-
 
     public static void delete(File itemToDelete)
     {
@@ -66,6 +40,20 @@ public class FileUtilities
             }
         }
         itemToDelete.delete();
+    }
+
+    public static void createDirectory(String path)
+    {
+        File directory = new File(path);
+        if (!directory.exists())
+            directory.mkdir();
+    }
+
+    public static void createDirectory(Hashtable<String, String> elements, String directoryToWriteTo) throws IOException
+    {
+        File directory = new File(directoryToWriteTo);
+        directory.mkdir();
+        writeInfoFile(elements, directory);
     }
 
     // Splits a directory into pieces and then reads the particular directory at the specified level(s).
@@ -87,20 +75,6 @@ public class FileUtilities
         return directoryNameToReturn;
     }
 
-    public static void createDirectory(String path)
-    {
-        File directory = new File(path);
-        if (!directory.exists())
-            directory.mkdir();
-    }
-
-    public static void createDirectory(Hashtable<String, String> elements, String directoryToWriteTo) throws IOException
-    {
-        File directory = new File(directoryToWriteTo);
-        directory.mkdir();
-        writeInfoFile(elements, directory);
-    }
-
     public static void writeInfoFile(Hashtable<String, String> elements, File directoryToWriteTo) throws IOException
     {
         File infoFile = new File(directoryToWriteTo.getAbsolutePath() + "/" + elements.get("title") + ".txt");
@@ -117,9 +91,40 @@ public class FileUtilities
         outputStream.close();
     }
 
-    public static String getFileNameNoExtension(String fileName, String fileType)
+    public static ArrayList<String> reverseArray(ArrayList<String> array)
     {
-        return fileName.substring(0, fileName.indexOf("." + fileType));
+        Collections.reverse(array);
+        return array;
+    }
+
+    public static ArrayList<String> getDirectoryList(String baseDirectory)
+    {
+        ArrayList<String> fileNames = new ArrayList<String>();
+        File dir = new File(baseDirectory);
+        File[] allDirs = dir.listFiles();
+        for (File f : allDirs)
+            if (f.isDirectory())
+                fileNames.add(f.getName());
+        return fileNames;
+    }
+
+    public static ArrayList<String> getFileList(String baseDirectory)
+    {
+        ArrayList<String> fileNames = new ArrayList<>();
+        File dir = new File(baseDirectory);
+        File[] allFiles = dir.listFiles();
+        for (File f : allFiles)
+            fileNames.add(f.getName());
+        return fileNames;
+    }
+
+    public static ArrayList<String> getPathList(String baseDirectory)
+    {
+        ArrayList<String> fileNames = getFileList(baseDirectory);
+        ArrayList<String> paths = new ArrayList<>();
+        for (int i = 0; i < fileNames.size(); i++)
+            paths.add(baseDirectory + "/" + fileNames.get(i));
+        return paths;
     }
 
     public static ArrayList<String> getSortedFilePaths(String path)
@@ -142,26 +147,6 @@ public class FileUtilities
 
     public static ArrayList<String> getSortedFilePathsReverse(String path)
     {
-        File[] files = new File(path).listFiles();
-        Arrays.sort(files, new Comparator<File>()
-        {
-            @Override
-            public int compare(File f1, File f2)
-            {
-                return Long.valueOf(f1.lastModified()).compareTo(f2.lastModified());
-            }
-        });
-
-        ArrayList<String> orderedPaths = new ArrayList<>();
-        for (int i = 0; i < files.length; i++)
-            orderedPaths.add(files[i].getAbsolutePath());
-        Collections.reverse(orderedPaths);
-        return orderedPaths;
-    }
-
-    public static ArrayList<String> reverseArray(ArrayList<String> array)
-    {
-        Collections.reverse(array);
-        return array;
+        return reverseArray(getSortedFilePaths(path));
     }
 }

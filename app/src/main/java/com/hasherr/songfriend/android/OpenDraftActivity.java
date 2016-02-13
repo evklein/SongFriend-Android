@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
 import com.hasherr.songfriend.android.custom.ToolBarActivity;
 import com.hasherr.songfriend.android.ui.handler.DeleteDialogHandler;
 import com.hasherr.songfriend.android.ui.handler.ListHandler;
+import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
-public class OpenDraftActivity extends ToolBarActivity implements FloatingActionButtonListener
+public class OpenDraftActivity extends ToolBarActivity implements FloatingActionButtonListener, ListHandler.ListHandlerListener
 {
     private String projectName;
     private ListHandler listHandler;
@@ -24,34 +24,7 @@ public class OpenDraftActivity extends ToolBarActivity implements FloatingAction
         setContentView(R.layout.activity_open_draft);
         initToolbar(R.id.openDraftToolbar, "Open a draft - " + projectName);
         initFloatingActionButton();
-
-        listHandler = new ListHandler((ListView) findViewById(R.id.draftListView),
-                new ArrayAdapter<>(OpenDraftActivity.this, R.layout.row, FileUtilities.getDirectoryList(path)), path);
-
-        listHandler.initListViewItemClick(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                String elementName = ((String) parent.getItemAtPosition(position));
-                intentManager.makePathBundle(FileUtilities.DIRECTORY_TAG, path + "/" + elementName);
-                startActivity(intentManager.createIntent(OpenDraftActivity.this, ProjectActivity.class));
-            }
-        });
-
-        listHandler.initListViewLongItemClick(new AdapterView.OnItemLongClickListener()
-        {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                final String itemToDelete = (String) parent.getItemAtPosition(position);
-                DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
-                deleteDialogHandler.initialize(OpenDraftActivity.this, "Delete Draft",
-                        "Are you sure you want to delete this draft?", path + "/" + itemToDelete, path, true, listHandler);
-                deleteDialogHandler.show();
-                return true;
-            }
-        });
+        initListHandler();
     }
 
     @Override
@@ -59,11 +32,11 @@ public class OpenDraftActivity extends ToolBarActivity implements FloatingAction
     {
         projectName = FileUtilities.getDirectoryAtLevel(getIntent().getExtras().getString(FileUtilities.DIRECTORY_TAG),
                 FileUtilities.PROJECT_LEVEL);
-        createPath();
+        initPath();
     }
 
     @Override
-    protected void createPath()
+    public void initPath()
     {
         path = FileUtilities.PROJECT_DIRECTORY + "/" + projectName;
     }
@@ -90,5 +63,37 @@ public class OpenDraftActivity extends ToolBarActivity implements FloatingAction
     {
         listHandler.refresh(FileUtilities.getDirectoryList(path));
         super.onResume();
+    }
+
+    @Override
+    public void initListHandler()
+    {
+        listHandler = new ListHandler((ListView) findViewById(R.id.draftListView),
+                new ArrayAdapter<>(OpenDraftActivity.this, R.layout.row, FileUtilities.getDirectoryList(path)));
+
+        listHandler.initListViewItemClick(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                String elementName = ((String) parent.getItemAtPosition(position));
+                intentManager.makePathBundle(FileUtilities.DIRECTORY_TAG, path + "/" + elementName);
+                startActivity(intentManager.createIntent(OpenDraftActivity.this, ProjectActivity.class));
+            }
+        });
+
+        listHandler.initListViewLongItemClick(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                final String itemToDelete = (String) parent.getItemAtPosition(position);
+                DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
+                deleteDialogHandler.initialize(OpenDraftActivity.this, "Delete Draft",
+                        "Are you sure you want to delete this draft?", path + "/" + itemToDelete, path, true, listHandler);
+                deleteDialogHandler.show();
+                return true;
+            }
+        });
     }
 }

@@ -18,6 +18,7 @@ import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.audio.AudioRecorder;
 import com.hasherr.songfriend.android.audio.AudioTimerRunnable;
 import com.hasherr.songfriend.android.project.Killable;
+import com.hasherr.songfriend.android.project.PathListener;
 import com.hasherr.songfriend.android.ui.listener.CustomOrientationListener;
 import com.hasherr.songfriend.android.ui.listener.ErrorListener;
 import com.hasherr.songfriend.android.ui.runnable.RecordDialogFragmentUIRunnable;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 /**
  * Created by evan on 1/19/16.
  */
-public class RecordDialogFragment extends DialogFragment implements Killable, CustomOrientationListener, ErrorListener
+public class RecordDialogFragment extends DialogFragment implements Killable, CustomOrientationListener, ErrorListener, PathListener
 {
     private RecordDialogFragmentUIRunnable recordDialogFragmentUIRunnable;
     private View view;
@@ -50,17 +51,64 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
         view = inflater.inflate(R.layout.fragment_dialog_record, container, false);
         setRetainInstance(true);
 
-        recordPath = getArguments().getString("recordingPath");
         audioRecorder = new AudioRecorder();
         isRecording = false;
         recordDialogFragmentUIRunnable = new RecordDialogFragmentUIRunnable((ImageView) view.findViewById(R.id.blinkerView),
                 (TextView) view.findViewById(R.id.recordDialogLengthTextView), new AudioTimerRunnable());
 
+        initPath();
         setSpecifiedOrientation();
         initRecordButton();
         initSaveRecordingButton();
         initCancelButton();
         return view;
+    }
+
+    @Override
+    public void initPath()
+    {
+        recordPath = getArguments().getString(FileUtilities.RECORDING_TAG);
+    }
+
+    @Override
+    public void setSpecifiedOrientation()
+    {
+        int currentOrientation = getResources().getConfiguration().orientation;
+        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE)
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        else
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState)
+    {
+        Dialog dialog = new Dialog(getActivity(), getTheme())
+        {
+            @Override
+            public void onBackPressed()
+            {
+                RecordDialogFragment.this.dismiss();
+            }
+        };
+
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        return dialog;
+    }
+
+    @Override
+    public void dismiss()
+    {
+        kill();
+        super.dismiss();
+    }
+
+    @Override
+    public void kill()
+    {
+        ((EditText) getView().findViewById(R.id.recordingTitleEditText)).setText("");
+        audioRecorder.kill();
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
     }
 
     private void initRecordButton()
@@ -89,8 +137,7 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
                         audioRecorder.stopRecording();
                         isRecording = false;
                     }
-                }
-                catch (Exception e)
+                } catch (Exception e)
                 {
                     e.printStackTrace();
                 }
@@ -133,13 +180,6 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
         });
     }
 
-    private Intent packageIntentRefreshData(String pathToPass)
-    {
-        Intent intent = new Intent();
-        intent.putExtra(FileUtilities.RECORDING_TAG, pathToPass);
-        return intent;
-    }
-
     @Override
     public boolean hasErrors()
     {
@@ -176,44 +216,10 @@ public class RecordDialogFragment extends DialogFragment implements Killable, Cu
         return false;
     }
 
-    @Override
-    public void setSpecifiedOrientation()
+    private Intent packageIntentRefreshData(String pathToPass)
     {
-        int currentOrientation = getResources().getConfiguration().orientation;
-        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE)
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        else
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    }
-
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState)
-    {
-        Dialog dialog = new Dialog(getActivity(), getTheme())
-        {
-            @Override
-            public void onBackPressed()
-            {
-                RecordDialogFragment.this.dismiss();
-            }
-        };
-
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        return dialog;
-    }
-
-    @Override
-    public void dismiss()
-    {
-        kill();
-        super.dismiss();
-    }
-
-    @Override
-    public void kill()
-    {
-        ((EditText) getView().findViewById(R.id.recordingTitleEditText)).setText("");
-        audioRecorder.kill();
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
+        Intent intent = new Intent();
+        intent.putExtra(FileUtilities.MODIFY_RECORDING_TAG, pathToPass);
+        return intent;
     }
 }

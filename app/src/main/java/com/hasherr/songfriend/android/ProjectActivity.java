@@ -20,7 +20,7 @@ public class ProjectActivity extends ToolBarActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project);
-        createPath();
+        initPath();
         initToolbar(R.id.projectActivityToolbar, projectName + " - " + draftName);
         createDirectories();
         initTabs();
@@ -80,7 +80,7 @@ public class ProjectActivity extends ToolBarActivity
     }
 
     @Override
-    protected void createPath()
+    public void initPath()
     {
         path = getIntent().getExtras().getString(FileUtilities.DIRECTORY_TAG);
     }

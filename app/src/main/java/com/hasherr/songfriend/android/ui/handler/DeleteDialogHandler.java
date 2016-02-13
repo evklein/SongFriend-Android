@@ -3,7 +3,6 @@ package com.hasherr.songfriend.android.ui.handler;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import com.hasherr.songfriend.android.R;
@@ -24,16 +23,19 @@ public class DeleteDialogHandler
     private ListHandler listHandler;
     private boolean directoryOnly;
 
-    public void initialize(Context context, String title, String message, String pathOfItemToDelete, String basePath, boolean directoryOnly, ListHandler listHandler)
+    public void initialize(Context context, String title, String message, String pathOfItemToDelete, String basePath,
+                           boolean directoryOnly, ListHandler listHandler)
     {
         this.context = context;
         this.pathOfItemToDelete = pathOfItemToDelete;
         this.basePath = basePath;
         this.listHandler = listHandler;
         this.directoryOnly = directoryOnly;
+
         dialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.Theme_Delete));
         dialogBuilder.setTitle(title);
         dialogBuilder.setMessage(message);
+
         setPositiveButton();
         setNegativeButton();
     }
@@ -72,7 +74,6 @@ public class DeleteDialogHandler
 
     private void refreshList()
     {
-        Log.wtf("We're refreshing here!", basePath);
         if (directoryOnly) listHandler.refresh(FileUtilities.getDirectoryList(basePath));
         else listHandler.refresh(FileUtilities.getPathList(basePath));
     }

@@ -35,11 +35,9 @@ public class AudioUtilities
 
     public static byte[] shortToByteArray(short val)
     {
-        byte[] bytes = new byte[]
-                {
-                        (byte)(val & 0xff),
-                        (byte)((val >>> 8) & 0xff)
-                };
+        byte[] bytes = new byte[2];
+        bytes[0] = (byte)(val & 0xff);
+        bytes[1] = (byte)((val >>> 8) & 0xff);
         return bytes;
     }
 }

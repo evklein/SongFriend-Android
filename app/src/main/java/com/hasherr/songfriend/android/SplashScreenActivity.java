@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
-import com.hasherr.songfriend.android.ui.visual.WindowAnimator;
+import com.hasherr.songfriend.android.ui.visual.WindowSlideInAnimator;
 
 public class SplashScreenActivity extends AppCompatActivity
 {
-    private WindowAnimator windowAnimator;
-    private final int SPLASH_DELAY = 2500;
+    private WindowSlideInAnimator windowAnimator;
+    private final int SPLASH_DELAY = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -18,7 +18,7 @@ public class SplashScreenActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        windowAnimator = new WindowAnimator();
+        windowAnimator = new WindowSlideInAnimator();
 
         new Handler().postDelayed(new Runnable()
         {

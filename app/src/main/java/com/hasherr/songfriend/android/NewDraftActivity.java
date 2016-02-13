@@ -2,10 +2,12 @@ package com.hasherr.songfriend.android;
 
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import com.hasherr.songfriend.android.custom.CustomNewItemActivity;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
@@ -23,6 +25,7 @@ public class NewDraftActivity extends CustomNewItemActivity
         setContentView(R.layout.activity_new_draft);
         initToolbar(R.id.newDraftToolbar, "New Draft - " + projectName);
         initSpinner();
+        initPath();
     }
 
     @Override
@@ -33,18 +36,17 @@ public class NewDraftActivity extends CustomNewItemActivity
     }
 
     @Override
-    public void createPath()
+    public void initPath()
     {
         path = FileUtilities.PROJECT_DIRECTORY + "/" + projectName + "/" + getEditTextContents(R.id.draftTitleEditText);
     }
 
     public void createDraft(View view) throws IOException
     {
-        if (!hasErrors(R.id.newDraftErrorTextView, R.id.draftTitleEditText,
-                FileUtilities.PROJECT_DIRECTORY + "/" + projectName, "draft"))
+        if (!hasErrors())
         {
             super.createItem(view);
-            startActivity(intentManager.createIntent(this, ProjectActivity.class));
+            startActivity(intentManager.createIntent(NewDraftActivity.this, ProjectActivity.class));
         }
     }
 
@@ -53,6 +55,32 @@ public class NewDraftActivity extends CustomNewItemActivity
     {
         finish(); 
         return true;
+    }
+
+    @Override
+    public boolean hasErrors()
+    {
+        TextView errorTextView = (TextView) findViewById(R.id.draftTitleEditText);
+        String title = getEditTextContents(R.id.draftTitleEditText).toLowerCase();
+
+        if (title.equals(""))
+        {
+            errorTextView.setText("Please add a title.");
+            return true;
+        }
+
+        Log.wtf("PATH IS ", path);
+        ArrayList<String> allItemNames = FileUtilities.getDirectoryList(path);
+        for (String s : allItemNames)
+        {
+            if (s.toLowerCase().equals(title))
+            {
+                errorTextView.setText("That draft already exists.");
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

@@ -37,29 +37,4 @@ public abstract class CustomNewItemActivity extends ToolBarActivity implements E
     }
 
     protected abstract void createElements();
-
-//    @Override
-//    public boolean hasErrors()
-//    {
-//        TextView errorTextView = (TextView) findViewById(errorTextViewID);
-//        String title = getEditTextContents(titleEditTextID).toLowerCase();
-//
-//        if (title.equals(""))
-//        {
-//            errorTextView.setText("Please add a title.");
-//            return true;
-//        }
-//
-//        ArrayList<String> allItemNames = FileUtilities.getDirectoryList(fileListDirectoryPath);
-//        for (String s : allItemNames)
-//        {
-//            if (s.toLowerCase().equals(title))
-//            {
-//                errorTextView.setText("That " + type + " already exists.");
-//                return true;
-//            }
-//        }
-//
-//        return false;
-//    }
 }

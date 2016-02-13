@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
 import com.hasherr.songfriend.android.custom.ToolBarActivity;
 import com.hasherr.songfriend.android.ui.handler.DeleteDialogHandler;
 import com.hasherr.songfriend.android.ui.handler.ListHandler;
+import com.hasherr.songfriend.android.ui.listener.FloatingActionButtonListener;
 import com.hasherr.songfriend.android.utility.FileUtilities;
 
-public class OpenProjectActivity extends ToolBarActivity implements FloatingActionButtonListener
+public class OpenProjectActivity extends ToolBarActivity implements FloatingActionButtonListener, ListHandler.ListHandlerListener
 {
     private ListHandler listHandler;
 
@@ -23,44 +23,17 @@ public class OpenProjectActivity extends ToolBarActivity implements FloatingActi
         setContentView(R.layout.activity_open_project);
         initToolbar(R.id.openProjectToolbar, "Open a project");
         initFloatingActionButton();
-
-        listHandler = new ListHandler((ListView) findViewById(R.id.projectListView),
-                new ArrayAdapter<>(this, R.layout.row, FileUtilities.getDirectoryList(path)), path);
-
-        listHandler.initListViewItemClick(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                String elementName = ((String) parent.getItemAtPosition(position));
-                intentManager.makePathBundle(FileUtilities.DIRECTORY_TAG, path + "/" + elementName);
-                startActivity(intentManager.createIntent(OpenProjectActivity.this, OpenDraftActivity.class));
-            }
-        });
-
-        listHandler.initListViewLongItemClick(new AdapterView.OnItemLongClickListener()
-        {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                final String itemToDelete = (String) parent.getItemAtPosition(position);
-                DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
-                deleteDialogHandler.initialize(OpenProjectActivity.this, "Delete Project",
-                        "Are you sure you want to delete this project?", path + "/" + itemToDelete, path, true, listHandler);
-                deleteDialogHandler.show();
-                return true;
-            }
-        });
+        initListHandler();
     }
 
     @Override
     protected void initValues()
     {
-        createPath();
+        initPath();
     }
 
     @Override
-    protected void createPath()
+    public void initPath()
     {
         path = FileUtilities.PROJECT_DIRECTORY;
     }
@@ -87,5 +60,37 @@ public class OpenProjectActivity extends ToolBarActivity implements FloatingActi
     {
         listHandler.refresh(FileUtilities.getDirectoryList(path));
         super.onResume();
+    }
+
+    @Override
+    public void initListHandler()
+    {
+        listHandler = new ListHandler((ListView) findViewById(R.id.projectListView),
+                new ArrayAdapter<>(this, R.layout.row, FileUtilities.getDirectoryList(path)));
+
+        listHandler.initListViewItemClick(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                String elementName = ((String) parent.getItemAtPosition(position));
+                intentManager.makePathBundle(FileUtilities.DIRECTORY_TAG, path + "/" + elementName);
+                startActivity(intentManager.createIntent(OpenProjectActivity.this, OpenDraftActivity.class));
+            }
+        });
+
+        listHandler.initListViewLongItemClick(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                final String itemToDelete = (String) parent.getItemAtPosition(position);
+                DeleteDialogHandler deleteDialogHandler = new DeleteDialogHandler();
+                deleteDialogHandler.initialize(OpenProjectActivity.this, "Delete Project",
+                        "Are you sure you want to delete this project?", path + "/" + itemToDelete, path, true, listHandler);
+                deleteDialogHandler.show();
+                return true;
+            }
+        });
     }
 }
