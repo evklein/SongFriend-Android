@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:background="@color/backgroundColor"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <TextView
-            android:id="@+id/lyricLayoutTextView"
-            android:text="Lyrics"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content" android:layout_height="match_parent"/>
+    <com.woxthebox.draglistview.DragListView
+            android:id="@+id/lyricCorkboardDragListView"
+            android:divider="@drawable/divider_drawable"
+            android:dividerHeight="4px"
+            android:minWidth="50px"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
 </LinearLayout>

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import com.hasherr.songfriend.android.fragments.lyrics.WriteFragment;
+import com.hasherr.songfriend.android.fragments.lyrics.LyricMenuFragment;
 import com.hasherr.songfriend.android.fragments.play.PerformFragment;
 import com.hasherr.songfriend.android.fragments.record.RecordMenuFragment;
 import com.hasherr.songfriend.android.utility.FileUtilities;
@@ -30,7 +30,7 @@ public class CustomPagerAdapter extends FragmentPagerAdapter
         switch (position)
         {
             case 0:
-                return new WriteFragment();
+                return new LyricMenuFragment();
             case 1:
                 RecordMenuFragment recordMenuFragment = new RecordMenuFragment();
                 Bundle recordingBundle = new Bundle();
