@@ -2,39 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\exploded-aar\com.github.woxthebox\draglistview\1.2.0\jars\classes.jar"
+        jar="C:\Users\Evan\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="b87015179e9b9b855fd400eef4c0e19b1316877d">
-        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\classes-65199ac6f0a25803b679d53e898618131ad2be63.jar" />
-    </item>
-    <item
-        jar="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\classes-725659ea69bba71a0f217c1d3775392d07c47973.jar" />
-    </item>
-    <item
-        jar="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-3ad2a868e81d675bdcb2b3606b67fb73464da72f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\classes-86429e9518f415e89fc49565dd665a33368bf495.jar" />
-    </item>
-    <item
-        jar="C:\Users\Evan\GeneralDev\Android\adt-bundle-windows-x86_64-20140321\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-71b323e317483386382106411ec92aea08a97e60.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\library-2.4.0-510a74ae7a99ec1c5e4ac383199c5d9dad825d64.jar" />
     </item>
 
 </items>

@@ -10,8 +10,7 @@
     <ListView
             android:id="@+id/recordingListView"
             android:layout_width="match_parent" android:layout_height="match_parent"
-            android:divider="@drawable/divider_drawable"
-            android:dividerHeight="4px"
+            android:divider="@drawable/divider_drawable" android:dividerHeight="4px"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
     </ListView>
 
