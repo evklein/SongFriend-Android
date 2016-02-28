@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hasherr.songfriend.android" >
 
+    <uses-sdk android:minSdkVersion="21"/>
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -18,31 +20,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-                android:label="MainActivity"
-                android:parentActivityName=".SplashScreenActivity"
-                android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.hasherr.songfriend.android.SplashScreenActivity" />
-        </activity>
         <activity
             android:name=".OpenProjectActivity"
             android:label="@string/title_activity_open_project"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hasherr.songfriend.android.MainActivity" />
+                android:value="com.hasherr.songfriend.android.SplashScreenActivity" />
         </activity>
         <activity
             android:name=".NewProjectActivity"
             android:label="@string/title_activity_new_project"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".OpenProjectActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hasherr.songfriend.android.MainActivity" />
+                android:value="com.hasherr.songfriend.android.OpenProjectActivity" />
         </activity>
         <activity
             android:name=".OpenDraftActivity"

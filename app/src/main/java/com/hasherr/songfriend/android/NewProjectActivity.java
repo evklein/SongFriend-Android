@@ -32,7 +32,7 @@ public class NewProjectActivity extends CustomNewItemActivity
     @Override
     public boolean hasErrors()
     {
-        TextView errorTextView = (TextView) findViewById(R.id.projectTitleEditText);
+        TextView errorTextView = (TextView) findViewById(R.id.newProjectErrorTextView);
         String title = getEditTextContents(R.id.projectTitleEditText).toLowerCase();
 
         if (title.equals(""))
@@ -58,6 +58,12 @@ public class NewProjectActivity extends CustomNewItemActivity
     public void initPath()
     {
         path = FileUtilities.PROJECT_DIRECTORY + "/" + getEditTextContents(R.id.projectTitleEditText);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        overridePendingTransition(R.anim.slide_out, R.anim.nothing);
     }
 
     @Override

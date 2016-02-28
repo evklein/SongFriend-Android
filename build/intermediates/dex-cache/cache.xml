@@ -2,11 +2,67 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Evan\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.android.support/design/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e5c61a3169221a89654ffcaaed47bba51cf071ad">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/classes-909baedb7c5344f3d86eb78917a2abed0196fe71.jar" />
+    </item>
+    <item
+        jar="/Users/evan/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\Evan\GeneralDev\SongFriend\SongFriend-Android\app\build\intermediates\pre-dexed\debug\library-2.4.0-510a74ae7a99ec1c5e4ac383199c5d9dad825d64.jar" />
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/library-2.4.0-60f26a4b9badc2e8c2e79262edfd3ecfe748862b.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-bfd57c2f8bb9b87c3567bb157b073f17133293d7.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/classes-19c547a312ba885c57f980c78e64e204842ac7d8.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.nhaarman.listviewanimations/lib-core-slh/3.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="49223278ec2ede1d05d00868c5ce3e077b4016f8">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/classes-e70206f9031116031da46fe14bada5f7de603fc4.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/classes-bd9e55f29d8b815aa1262fa7d3d24b5d0b926be9.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.nhaarman.listviewanimations/lib-core/3.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="acf66033b1418ccf9e15c8e77750981e4809c4ea">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/classes-26b52beb12d98de52f7528fbeb0b22b742378d38.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-cd759fc3755f1431c0f5cbdd3c9ec9f20cee30c3.jar" />
+    </item>
+    <item
+        jar="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/exploded-aar/com.nhaarman.listviewanimations/lib-manipulation/3.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5660e4bf78904137e90e62a5d4cc2e987258f02c">
+        <dex dex="/Users/evan/Documents/Development/SongFriend/SongFriend-Android/app/build/intermediates/pre-dexed/debug/classes-3693f88badfd2f9bcb8d8d1c20f2b1490960db13.jar" />
     </item>
 
 </items>

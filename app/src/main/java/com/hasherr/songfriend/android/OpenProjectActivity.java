@@ -3,6 +3,7 @@ package com.hasherr.songfriend.android;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,7 +20,9 @@ public class OpenProjectActivity extends ToolBarActivity implements FloatingActi
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_open_project);
         initToolbar(R.id.openProjectToolbar, "Open a project");
         initFloatingActionButton();
@@ -93,4 +96,13 @@ public class OpenProjectActivity extends ToolBarActivity implements FloatingActi
             }
         });
     }
+
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus)
+//    {
+//        super.onWindowFocusChanged(hasFocus);
+//        WindowSlideInAnimator windowAnimator = new WindowSlideInAnimator();
+//        ViewGroup windowRoot = (ViewGroup) findViewById(android.R.id.content);
+//        windowAnimator.animate(windowRoot, hasFocus, WindowSlideInAnimator.SLIDE_LEFT);
+//    }
 }
