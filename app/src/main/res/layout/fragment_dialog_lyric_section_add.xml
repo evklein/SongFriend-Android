@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/backgroundColor"
+              android:layout_width="275dp"
+              android:layout_height="190dp">
+    <TextView
+            android:text="Add Section"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="10pt"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <View android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginBottom="20dp"
+          android:background="@color/logoGreen"/>
+
+    <EditText
+            android:id="@+id/sectionTitleEditText"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:hint="Section Title"
+            android:textColorHint="#656565"
+            android:layout_width="225dp" android:layout_height="wrap_content"/>
+
+    <Spinner
+            android:layout_marginLeft="25dp"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+    <LinearLayout
+            android:id="@+id/recordButtons"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/cancelRecordingButton"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:background="@drawable/dialog_button_drawable_left"
+                android:layout_width="125dp" android:layout_height="50dp"/>
+        <Button
+                android:text="Create Section"
+                android:id="@+id/saveRecordButton"
+                android:textColor="@color/white"
+                android:background="@drawable/dialog_button_drawable_right"
+                android:layout_width="150dp" android:layout_height="50dp"/>
+    </LinearLayout>
+</LinearLayout>

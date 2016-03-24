@@ -1,13 +1,15 @@
 package com.hasherr.songfriend.android.fragments.lyrics;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import com.hasherr.songfriend.android.R;
 import com.hasherr.songfriend.android.ui.adapter.CustomDragArrayAdapter;
+import com.hasherr.songfriend.android.utility.FileUtilities;
 import com.nhaarman.listviewanimations.appearance.simple.SwingRightInAnimationAdapter;
 import com.nhaarman.listviewanimations.itemmanipulation.DynamicListView;
 
@@ -18,7 +20,8 @@ import java.util.ArrayList;
  */
 public class LyricMenuFragment extends Fragment
 {
-    DynamicListView dynamicListView;
+    private DynamicListView dynamicListView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -49,6 +52,21 @@ public class LyricMenuFragment extends Fragment
                     }
                 });
         return view;
+    }
+
+    private void initAddLyricSection(View view)
+    {
+        final Button addLyricSectionButton = (Button) view.findViewById(R.id.addLyricSectionButton);
+        addLyricSectionButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                AddLyricSectionDialogFragment addLyricSectionDialogFragment = new AddLyricSectionDialogFragment();
+                addLyricSectionDialogFragment.setTargetFragment(LyricMenuFragment.this, FileUtilities.MODIFY_REQUEST_CODE);
+                addLyricSectionDialogFragment.show(getFragmentManager(), "add_lyric_section_dialog_fragment");
+            }
+        });
     }
 }
 
